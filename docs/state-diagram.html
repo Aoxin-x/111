@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高校图书借阅系统 - 状态图</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #1976d2;
+            margin-top: 40px;
+            margin-bottom: 15px;
+        }
+        .mermaid {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .instructions {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e8f4fd;
+            border-radius: 5px;
+            color: #333;
+        }
+        .state-info {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f0f8ff;
+            border-radius: 5px;
+        }
+        .state-info h3 {
+            margin-top: 0;
+            color: #1976d2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>高校图书借阅系统 - 状态图</h1>
+
+        <h2>图书状态图</h2>
+        <div class="mermaid">
+stateDiagram-v2
+    [*] --> 在馆: 新书入库
+
+    在馆 --> 可借: 图书上架
+    在馆 --> 在馆: 图书整理
+    在馆 --> [*]: 图书报废
+
+    可借 --> 已借出: 用户借书
+    可借 --> 可借: 图书维护
+    可借 --> 在馆: 下架整理
+
+    已借出 --> 可借: 用户还书
+    已借出 --> 逾期未还: 超过应还日期
+    已借出 --> 已借出: 续借
+
+    逾期未还 --> 可借: 用户还书并缴费
+    逾期未还 --> 逾期未还: 持续逾期
+    逾期未还 --> 挂失: 用户报失
+
+    挂失 --> [*]: 图书注销
+
+    续借 --> 已借出: 续借成功
+    续借 --> 逾期未还: 续借后到期
+
+    note right of 在馆
+        图书在馆内整理中
+        可以被查询但不可借
+    end note
+
+    note right of 已借出
+        图书正在被用户借阅
+        其他用户可预约
+    end note
+
+    note right of 逾期未还
+        产生逾期罚款
+        需要缴费后才能还书
+    end note
+        </div>
+
+        <h2>借阅记录状态图</h2>
+        <div class="mermaid">
+stateDiagram-v2
+    [*] --> 借阅中: 创建借阅记录
+
+    借阅中 --> 正常归还: 用户还书
+    借阅中 --> 逾期中: 超过应还日期
+    借阅中 --> 逾期中: 续借后到期
+
+    正常归还 --> [*]: 记录归档
+
+    逾期中 --> 正常归还: 用户还书缴费
+    逾期中 --> 已挂失: 图书丢失
+    逾期中 --> 逾期中: 持续逾期
+
+    已挂失 --> [*]: 处理完毕
+
+    note right of 借阅中
+        图书正在借阅中
+        可进行续借操作
+    end note
+
+    note right of 逾期中
+        计算逾期罚款
+        需要缴清罚款
+    end note
+        </div>
+
+        <h2>预约状态图</h2>
+        <div class="mermaid">
+stateDiagram-v2
+    [*] --> 预约成功: 用户预约
+
+    预约成功 --> 待取书: 图书归还
+    预约成功 --> 已过期: 预约超时
+    预约成功 --> 已取消: 用户取消
+
+    待取书 --> 已取书: 用户取书
+    待取书 --> 已过期: 取书超时
+    待取书 --> 已取消: 用户取消
+
+    已取书 --> [*]: 记录归档
+
+    已过期 --> [*]: 记录归档
+
+    已取消 --> [*]: 记录归档
+
+    note right of 预约成功
+        等待图书归还
+        系统会通知用户
+    end note
+
+    note right of 待取书
+        图书已到馆
+        用户需要在规定时间内取书
+    end note
+        </div>
+
+        <div class="state-info">
+            <h3>状态图说明</h3>
+            <p><strong>图书状态图</strong>：描述图书从入库到报废的完整生命周期，包括在馆、可借、已借出、逾期未还、挂失等状态及其转换关系。</p>
+            <p><strong>借阅记录状态图</strong>：描述一次借阅从创建到归档的过程，包括借阅中、正常归还、逾期中、已挂失等状态。</p>
+            <p><strong>预约状态图</strong>：描述用户预约图书的状态变化，包括预约成功、待取书、已取书、已过期、已取消等状态。</p>
+        </div>
+
+        <div class="instructions">
+            <h3>导出图片步骤：</h3>
+            <ol>
+                <li>右键点击上方的图表</li>
+                <li>选择"另存为图片"或"复制图像"</li>
+                <li>如需截取整个页面，可使用 Ctrl+P 打印为PDF</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default'
+        });
+    </script>
+</body>
+</html>

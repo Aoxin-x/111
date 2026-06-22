@@ -1,0 +1,18 @@
+﻿cargo :    Compiling sqlrustgo v1.0.0 (D:\software\Trae CN\rustgo\sqlrustgo)
+所在位置 行:1 字符: 5
++ & { cargo test --lib -- 2>&1 | Out-File -FilePath "d:\software\Trae C ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (   Compiling sq...stgo\sqlrustgo) 
+   :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+warning: unused variable: `sequence`
+   --> src\network\mod.rs:380:26
+    |
+380 |                 Ok(Some((sequence, payload))) => {
+    |                          ^^^^^^^^ help: if this is intentional, prefix it
+ with an underscore: `_sequence`
+    |
+    = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by defau
+lt
+

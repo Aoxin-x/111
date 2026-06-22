@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>借书活动图</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .mermaid {
+            display: flex;
+            justify-content: center;
+        }
+        .instructions {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e8f4fd;
+            border-radius: 5px;
+            color: #333;
+        }
+        .instructions h3 {
+            margin-top: 0;
+            color: #1976d2;
+        }
+        .instructions ol {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>高校图书借阅系统 - 借书活动图</h1>
+        
+        <div class="mermaid">
+flowchart TD
+    A([开始]) --> B[登录系统]
+    B --> C{登录成功?}
+    C -->|否| D[显示错误信息]
+    D --> E([结束])
+    C -->|是| F[查询图书]
+
+    F --> G{图书存在?}
+    G -->|否| H[显示图书不存在]
+    H --> E
+    G -->|是| I{图书可借?}
+
+    I -->|否| J[显示图书已借出]
+    J --> K{是否预约?}
+    K -->|是| L[加入预约队列]
+    L --> E
+    K -->|否| E
+
+    I -->|是| M{用户借书数量未超限?}
+    M -->|否| N[显示借书数量超限]
+    N --> E
+    M -->|是| O[执行借书操作]
+
+    O --> P[更新借阅记录]
+    P --> Q[减少图书库存]
+    Q --> R[显示借书成功]
+    R --> S[发送借书确认通知]
+    S --> E
+        </div>
+
+        <div class="instructions">
+            <h3>导出图片步骤：</h3>
+            <ol>
+                <li>右键点击上方的图表</li>
+                <li>选择"另存为图片"或"复制图像"</li>
+                <li>如需截取整个页面，可使用 Ctrl+P 打印为PDF</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default'
+        });
+    </script>
+</body>
+</html>

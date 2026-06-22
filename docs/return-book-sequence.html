@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>还书顺序图</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .mermaid {
+            display: flex;
+            justify-content: center;
+        }
+        .instructions {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e8f4fd;
+            border-radius: 5px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>高校图书借阅系统 - 还书顺序图</h1>
+        
+        <div class="mermaid">
+sequenceDiagram
+    participant U as 用户
+    participant S as 系统
+    participant DB as 数据库
+    participant N as 通知系统
+
+    U->>S: 登录系统
+    S->>DB: 验证用户身份
+    DB-->>S: 验证结果
+    alt 登录失败
+        S-->>U: 显示错误信息
+    else 登录成功
+        S-->>U: 登录成功
+        U->>S: 查询要归还的图书
+        S->>DB: 查找借阅记录
+        DB-->>S: 返回借阅记录
+        alt 借阅记录不存在
+            S-->>U: 显示无借阅记录
+        else 借阅记录存在
+            S-->>U: 显示图书信息
+            U->>S: 确认还书
+            DB->>DB: 检查借阅期限
+            alt 图书逾期
+                DB->>DB: 计算罚款金额
+                DB-->>S: 返回罚款金额
+                S-->>U: 显示罚款信息
+                U->>S: 确认缴纳罚款
+                S->>DB: 记录罚款缴纳
+                DB-->>S: 罚款缴纳成功
+            end
+            S->>DB: 更新借阅记录为已归还
+            DB->>DB: 修改借阅状态
+            DB->>DB: 增加图书库存
+            DB-->>S: 更新成功
+            S->>DB: 查询是否有预约
+            DB-->>S: 返回预约信息
+            alt 有预约用户
+                S->>N: 发送通知
+                N->>N: 生成通知消息
+                N->>U: 通知用户可借书
+                Note over N: 通知预约用户
+            end
+            S-->>U: 显示还书成功
+            U->>S: 确认完成
+        end
+    end
+        </div>
+
+        <div class="instructions">
+            <h3>导出图片步骤：</h3>
+            <ol>
+                <li>右键点击上方的图表</li>
+                <li>选择"另存为图片"或"复制图像"</li>
+                <li>如需截取整个页面，可使用 Ctrl+P 打印为PDF</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default'
+        });
+    </script>
+</body>
+</html>

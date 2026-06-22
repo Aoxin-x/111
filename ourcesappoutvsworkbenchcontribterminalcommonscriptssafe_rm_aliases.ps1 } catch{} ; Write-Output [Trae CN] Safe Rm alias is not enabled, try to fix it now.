@@ -1,0 +1,166 @@
+[33m26e251d[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m docs: add architecture design documents
+[33m4be0b4d[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Merge branch 'release/v1.0.0'
+[33mcca4152[m[33m ([m[1;31morigin/feature/v1.0.0-beta[m[33m)[m Merge pull request #49 from minzuuniversity/fix/beta-fmt
+[33m85ce6ec[m fix: apply cargo fmt
+[33m749ba56[m[33m ([m[1;33mtag: [m[1;33mv1.0.0-rc.1[m[33m, [m[1;33mtag: [m[1;33mfeature/v1.0.0-beta-frozen[m[33m)[m Merge pull request #48 from minzuuniversity/docs/version-planning-docs
+[33mc413acb[m Merge pull request #47 from minzuuniversity/docs/v1.0-governance-update
+[33m378f356[m docs(governance): add comprehensive version planning documentation
+[33m86f16ea[m fix: 修复 clippy 警告
+[33m47efc3d[m fix: 修复 clippy 警告
+[33m6727dba[m Merge pull request #46 from minzuuniversity/fix/format-issues
+[33md284df2[m fix: 修复代码格式问题
+[33me805451[m Revert "fix: update version flow and fix code issues"
+[33m17adc23[m docs: 移除 RC-1 阶段，简化版本流程
+[33ma920999[m fix: update version flow and fix code issues
+[33mbd12da2[m fix: replace unwrap with proper error handling
+[33m8d09f09[m docs: update engineering governance for v1.0 freeze
+[33m8dd9a89[m docs: update version roadmap and flow diagram
+[33mb39196b[m docs: establish engineering governance standards for beta phase
+[33mea5e341[m Merge pull request #42 from minzuuniversity/feature/auth-impl-beta
+[33m050a508[m merge: resolve conflicts with feature/v1.0.0-beta
+[33m0000e1c[m fix: implement FromStr trait for Role to satisfy clippy
+[33mc312f71[m fix: implement FromStr trait for Role to satisfy clippy
+[33m80d53b1[m feat(auth): 实现基础认证机制
+[33m3cc45c9[m feat(auth): 实现基础认证机制
+[33m25c83fe[m feat: add benchmark framework with Criterion.rs (#40)
+[33m27b38ce[m docs: reorganize v1.1.0-beta documentation structure
+[33mcbcd205[m Merge pull request #36 from minzuuniversity/feature/parser-coverage-improvement
+[33m4aadc17[m Merge pull request #35 from minzuuniversity/feature/executor-coverage-improvement
+[33m76b300a[m merge: resolve conflicts with feature/v1.0.0-beta
+[33m0a67825[m merge: resolve conflicts with feature/v1.0.0-beta
+[33mb07d792[m 在feature/v1.0.0-beta分支的docs/v1.0目录下创建Copilot-Github评估报告-SQLRustGo项目分析.md文件
+[33m8c90af6[m fix: resolve clippy warnings in executor aggregate functions
+[33m88b31d3[m fix: resolve clippy warnings in aggregate functions
+[33mffcac97[m test: add parser tests for coverage improvement
+[33m681556a[m feat: implement aggregate functions (COUNT/SUM/AVG/MIN/MAX) (#34)
+[33m37f88f5[m docs: v1.1.0-beta documentation (#31)
+[33mfa8fba0[m test: add executor tests for coverage improvement
+[33mbb87d08[m test: network coverage improvement to 90.94% (#33)
+[33m00008ff[m style: fix rustfmt formatting for v1.0.0-beta
+[33m4efb64d[m refactor: replace unwrap with explicit error handling (16 fixes) (#29)
+[33m10dce9f[m test: add more aggregate and executor tests
+[33m223672c[m feat: implement aggregate functions (COUNT/SUM/AVG/MIN/MAX)
+[33m995b057[m test: add more network integration tests for 90%+ coverage
+[33me8631c1[m test: add network integration tests for coverage improvement
+[33m10024b3[m docs: 修正 VERSION_PROMOTION_SOP Beta 阶段定义
+[33m0803613[m docs: 重写 AI增强软件工程 README，提升宏观视野
+[33mc649b04[m docs: 更新 AI增强软件工程 README，添加 AI 规划与分析报告索引
+[33m76ba1f1[m docs: 添加高小原对话记录文档
+[33ma6dbb51[m docs: 重组 AI 相关文档到 AI增强软件工程 目录
+[33mc093d2c[m Update SQLRustGo项目深度分析报告-Cipilog评估.md to SQLRustGo项目深度分析报告-Copilot评估.md
+[33m2d5b0e0[m Add SQLRustGo项目深度分析报告 - Cipilog评估
+[33mb09592a[m 创建 SQLRustGo 项目综合分析报告
+[33m51e1b46[m Comprehensive analysis report for SQLRustGo project added.
+[33m80ce8e3[m docs: 添加 AI 协作开发教程
+[33m6c4b592[m Create comprehensive analysis report for the SQLRustGo project.
+[33ma2a9f2b[m 创建Cipilog-Github评估报告文件
+[33m35532ba[m docs: 项目演进说明增加项目起源章节
+[33m611964c[m docs: 重命名对话记录为 Claude对话记录，强调项目起源
+[33m720567a[m docs: 修正文档时间顺序，增加版本专属阅读指南
+[33m96734fb[m docs: 恢复项目故事，人性化重写 README
+[33m93c8fdc[m docs: 重构 README 为项目索引和演进指南
+[33m4b21f86[m docs: v2.0 目录按子目录分类整理
+[33mf896396[m docs: 重组文档目录结构，创建v1.0和v2.0分离结构
+[33mbcd17cc[m docs: add engineering-level design documents for v2.0
+[33m9c5c805[m docs: create v2.0 planning directory with architecture documents
+[33m3824403[m docs: add architecture governance and plugin design
+[33m00e6713[m docs: add L3 upgrade and governance framework
+[33ma9438ae[m feat: add complete engineering governance framework
+[33m424c8b1[m[33m ([m[1;33mtag: [m[1;33mv1.0.0-beta.0[m[33m)[m docs: add VERSION_PROMOTION_SOP
+[33md08ec4f[m Merge feature/v1.0.0-alpha into feature/v1.0.0-beta
+[33m905043e[m[33m ([m[1;31morigin/feature/v1.0.0-alpha[m[33m)[m docs: correct alpha→beta→release→baseline workflow
+[33mfab615d[m[33m ([m[1;33mtag: [m[1;33mv1.0.0-alpha.1[m[33m)[m docs: add Alpha to Beta migration workflow plan
+[33mc598e18[m docs: add documentation reading guide and project evolution
+[33ma541795[m 如题所述
+[33m61d7aeb[m Merge pull request #27 from minzuuniversity/feature/v1.0.0-alpha
+[33m37d3574[m Update README with project background and details
+[33m4c0d2ff[m chatGPT 的 github AI 协作开发的配置方案。
+[33m2f498e8[m 飞书的群聊记录（我和 2 个小龙虾）
+[33md1ea4aa[m docs: 添加高小药与李哥聊天记录 (2026-02-18)
+[33m66d9dcb[m docs: Phase 2 准备工作 - 文档完善
+[33m2bda633[m Merge pull request #26 from minzuuniversity/feature/coverage-network-integration
+[33m0691929[m feat: add network integration tests
+[33m0b5f5e2[m Merge pull request #25 from minzuuniversity/feature/docs-completion
+[33m1c394c4[m docs: 添加Alpha版本文档补全计划
+[33mc5e7c14[m Merge pull request #24 from minzuuniversity/feature/network-mock-v3
+[33m256bd4f[m test: 添加network模块集成测试 - Mock TcpStream
+[33m4192fb7[m Merge pull request #21 from minzuuniversity/feature/phase1-coverage
+[33mbd59044[m test: enhance network and executor test coverage
+[33m3a3fc75[m release: promote v1.0.0 evaluation to alpha (#14)
+[33m07c1baf[m docs: update version plan for v1.0.0 official release
+[33m9cbf378[m docs: add version evolution plan
+[33md19c35f[m docs: add comprehensive improvement plan for v1.0.0
+[33m56456cb[m docs: add v1.0.0 comprehensive evaluation reports
+[33m68ea344[m docs: 添加 v1.0.0 评估改进报告 (教学阶段)
+[33md3b58d1[m docs: 创建 v1.0.0 版本文档目录
+[33ma25f8c2[m docs: 补全对话记录和添加 AI 协作开发指南
+[33mc4631a4[m Merge pull request #6 from yinglichina8848/feature/docs-testing
+[33mcbd7f36[m Merge branch 'main' into feature/docs-testing
+[33m886ff1e[m[33m ([m[1;31morigin/baseline[m[33m)[m Merge pull request #8 from yinglichina8848/feature/types-system
+[33m912dc20[m test: enhance test coverage and documentation
+[33m79ea9af[m Merge pull request #5 from yinglichina8848/feature/index-executor-v2
+[33md336319[m docs: Task 11 完成，更新最终统计
+[33m7971f91[m feat: 索引优化与网络协议完善
+[33m7e89d2f[m docs: 添加后续工作规划 ROADMAP
+[33mb145c6a[m docs: 添加 CHANGELOG 和 RELEASE_NOTES 文档
+[33m71bac18[m Merge branch 'baseline' of https://github.com/yinglichina8848/sqlrustgo into baseline
+[33m9e9d362[m Merge pull request #3 from yinglichina8848/feature/readme-enhancement
+[33m2e46fa0[m fix: resolve clippy errors and finalize test documentation
+[33m0e4367e[m Merge pull request #4 from yinglichina8848/feature/network-protocol
+[33m4d21d81[m Merge pull request #2 from yinglichina8848/feature/index-executor
+[33m9567aee[m merge: 解决与 baseline 的冲突
+[33mb21e5b5[m test: add full workflow integration test
+[33md7f3d55[m docs: add What-Why-How comments to network module
+[33m22a6991[m docs: add What-Why-How comments to transaction module
+[33me3c1dda[m test: add transaction manager tests
+[33mfee2931[m test: add WAL basic write test
+[33maf2db77[m docs: add What-Why-How comments to executor module
+[33m63f46f8[m docs: add What-Why-How comments to B+ Tree
+[33m0d453a3[m test: add file storage tests
+[33m4b48cb0[m test: add buffer pool tests
+[33me38590e[m test: add page tests
+[33mcdb9d7f[m docs: enhance README with features and usage
+[33m34a4d14[m docs: add What-Why-How comments to parser module
+[33mb51daf8[m test: add lexer tests and comments
+[33m604dde8[m fix: 修复 Token Display 实现以输出大写格式
+[33mcca7b14[m test: add token tests
+[33m45d47bd[m feat: 完善 MySQL 网络协议层
+[33m8ccb96b[m docs: add What-Why-How comments to types/value.rs
+[33m2bb1aad[m docs: add What-Why-How comments to types/error.rs
+[33m566ed2f[m feat: 实现 B+ Tree 索引持久化和查询优化
+[33m0562265[m docs: 添加协作流程规范
+[33m1c2b6ba[m docs: 更新文档链接指向 baseline 分支
+[33m4222f97[m docs: 添加并行开发协作指南
+[33m55ed338[m docs: 更新协作指南，添加文档位置说明和 GitHub 访问链接
+[33mf2ed864[m docs: 添加并行开发协作指南
+[33mba9ea70[m feat: 完成 DML 操作相关功能
+[33m7ef44b6[m refactor: 使用 FileStorage 替代内存 HashMap 实现持久化存储
+[33m39390b4[m style: 代码格式化修复 (cargo fmt)
+[33md86528f[m feat: 实现完整的 DML 语句支持 (INSERT/UPDATE/DELETE)
+[33m8497800[m fix: 修复 .exit 命令 bug 和编译警告
+[33me87a8aa[m docs: Task 11 完成，更新最终统计
+[33mc737cda[m feat: 添加集成测试 (Task 11)
+[33m5623f6d[m docs: 更新阶段六、七完成状态
+[33mc77cc89[m refactor: 导出 network 模块，添加 From<io::Error> 实现
+[33m1f74e18[m feat: 实现网络协议层 (Task 10)
+[33m8c23748[m refactor: 导出 transaction 模块
+[33m584b3a7[m feat: 实现事务管理 (Task 9)
+[33m652868b[m docs: 添加实施完成状态和测试统计
+[33m942d651[m fix: 更新项目测试以匹配当前 API
+[33m1e118db[m feat: 实现 REPL 和 CLI (Task 9)
+[33m2e0f47a[m refactor: 导出 executor 模块
+[33m67f1f77[m feat: 实现查询执行器 (Task 8)
+[33mf05308e[m feat: 实现存储引擎 (Task 6)
+[33m4a7b6c5[m refactor: 导出 parser 模块
+[33m8a4e69e[m feat: 实现语法分析器 (Task 5)
+[33me34d897[m feat: 实现词法分析器 (Task 4)
+[33m71e128d[m feat: 定义核心类型系统 (Task 3)
+[33m269cb35[m docs: 更新对话记录，添加阶段一实施详情
+[33mfb72366[m feat: 配置 AI 工具链和 CI/CD (Task 2)
+[33m868f435[m feat: 初始化 Rust 项目结构 (Task 1)
+[33m82b6851[m chore: 添加 .worktrees 到 gitignore
+[33m213fc55[m docs: 添加对话记录文档
+[33m9baf110[m fix: 统一项目名称为 sqlrustgo，版本号改为 1.0.0
+[33m5769535[m Merge branch 'main' of https://github.com/yinglichina8848/sqlrustgo
+[33m6813895[m Initial commit
+[33m95cf91b[m feat: 初始化项目，添加设计文档和实施计划
