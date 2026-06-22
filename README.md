@@ -99,3 +99,12 @@ sqlrustgo/
 ## 参与贡献
 
 欢迎提交 PR！请参考 GitHub 上的 Issue 和 PR 列表。
+<<<<<<< HEAD
+test
+
+test
+
+test
+
+=======
+>>>>>>> c7649df707a5107bb3c7a8e05c5507162cfa907f
