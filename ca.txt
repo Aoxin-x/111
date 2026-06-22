@@ -1,0 +1,366 @@
+﻿cargo :     Blocking waiting for file lock on package cache
+所在位置 行:1 字符: 48
++ ... sqlrustgo"; cargo clippy --lib -p sqlrustgo -- -W clippy:
+:all 2>&1 |  ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (    Blocking wa.. 
+   .n package cache:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+    Checking sqlrustgo v1.0.0 (D:\software\Trae CN\rustgo\sqlru
+stgo)
+warning: unused variable: `sequence`
+   --> src\network\mod.rs:380:26
+    |
+380 |                 Ok(Some((sequence, payload))) => {
+    |                          ^^^^^^^^ help: if this is intent
+ional, prefix it with an underscore: `_sequence`
+    |
+    = note: `#[warn(unused_variables)]` (part of `#[warn(unused
+)]`) on by default
+
+warning: this expression creates a reference which is immediate
+ly dereferenced by the compiler
+   --> src\executor\mod.rs:109:48
+    |
+109 |                 self.execute_select_with_index(&table_dat
+a, where_expr, &column_map)
+    |                                                ^^^^^^^^^^
+^ help: change this to: `table_data`
+    |
+    = help: for further information visit https://rust-lang.git
+hub.io/rust-clippy/rust-1.94.0/index.html#needless_borrow
+    = note: `-W clippy::needless-borrow` implied by `-W clippy:
+:all`
+    = help: to override `-W clippy::all` add `#[allow(clippy::n
+eedless_borrow)]`
+
+warning: this `if let` can be collapsed into the outer `if let`
+   --> src\executor\mod.rs:181:25
+    |
+181 | /                         if let Value::Integer(key) = va
+lue {
+182 | |                             index_updates.push((col_nam
+e.clone(), *key, row_id));
+183 | |                         }
+    | |_________________________^
+    |
+help: the outer pattern can be modified to include the inner pa
+ttern
+   --> src\executor\mod.rs:180:33
+    |
+180 |                     if let Some(value) = row.get(*col_idx
+) {
+    |                                 ^^^^^ replace this bindin
+g
+181 |                         if let Value::Integer(key) = valu
+e {
+    |                                ^^^^^^^^^^^^^^^^^^^ with t
+his pattern
+    = help: for further information visit https://rust-lang.git
+hub.io/rust-clippy/rust-1.94.0/index.html#collapsible_match
+    = note: `-W clippy::collapsible-match` implied by `-W clipp
+y::all`
+    = help: to override `-W clippy::all` add `#[allow(clippy::c
+ollapsible_match)]`
+
+warning: this `if` statement can be collapsed
+   --> src\executor\mod.rs:180:21
+    |
+180 | /                     if let Some(value) = row.get(*col_i
+dx) {
+181 | |                         if let Value::Integer(key) = va
+lue {
+182 | |                             index_updates.push((col_nam
+e.clone(), *key, row_id));
+183 | |                         }
+184 | |                     }
+    | |_____________________^
+    |
+    = help: for further information visit https://rust-lang.git
+hub.io/rust-clippy/rust-1.94.0/index.html#collapsible_if
+    = note: `-W clippy::collapsible-if` implied by `-W clippy::
+all`
+    = help: to override `-W clippy::all` add `#[allow(clippy::c
+ollapsible_if)]`
+help: collapse nested if block
+    |
+180 ~                     if let Some(value) = row.get(*col_idx
+)
+181 ~                         && let Value::Integer(key) = valu
+e {
+182 |                             index_updates.push((col_name.
+clone(), *key, row_id));
+183 ~                         }
+    |
+
+warning: this `if` statement can be collapsed
+   --> src\executor\mod.rs:403:9
+    |
+403 | /         if let Expression::BinaryOp(left, op, right) = 
+where_expr {
+404 | |             if op.as_str() == "=" {
+405 | |                 // Check if left side is a column refer
+ence
+406 | |                 if let Expression::Identifier(col_name)
+ = left.as_ref() {
+...   |
+427 | |         }
+    | |_________^
+    |
+    = help: for further information visit https://rust-lang.git
+hub.io/rust-clippy/rust-1.94.0/index.html#collapsible_if
+help: collapse nested if block
+    |
+403 ~         if let Expression::BinaryOp(left, op, right) = wh
+ere_expr
+404 ~             && op.as_str() == "=" {
+405 |                 // Check if left side is a column referen
+ce
+...
+425 |                 }
+426 ~             }
+    |
+
+warning: this `if` statement can be collapsed
+   --> src\executor\mod.rs:411:25
+    |
+411 | /                         if let Some(key) = key_value.as
+_integer() {
+412 | |                             if self.storage.has_index(&
+table_data.info.name, col_name) {
+413 | |                                 // Use index to find ma
+tching row
+414 | |                                 if let Some(row_id) =
+...   |
+423 | |                         }
+    | |_________________________^
+    |
+    = help: for further information visit https://rust-lang.git
+hub.io/rust-clippy/rust-1.94.0/index.html#collapsible_if
+help: collapse nested if block
+    |
+411 ~                         if let Some(key) = key_value.as_i
+nteger()
+412 ~                             && self.storage.has_index(&ta
+ble_data.info.name, col_name) {
+413 |                                 // Use index to find matc
+hing row
+...
+421 |                                 }
+422 ~                             }
+    |
+
+warning: unnecessary use of `to_vec`
+   --> src\network\mod.rs:505:28
+    |
+505 |             .write_all(&buf.to_vec())
+    |                            ^^^^^^^^^ help: remove this
+    |
+    = help: for further information visit https://rust-lang.git
+hub.io/rust-clippy/rust-1.94.0/index.html#unnecessary_to_owned
+    = note: `-W clippy::unnecessary-to-owned` implied by `-W cl
+ippy::all`
+    = help: to override `-W clippy::all` add `#[allow(clippy::u
+nnecessary_to_owned)]`
+
+warning: unnecessary use of `to_vec`
+   --> src\network\mod.rs:516:30
+    |
+516 |         self.send_packet(&buf.to_vec())?;
+    |                              ^^^^^^^^^ help: remove this
+    |
+    = help: for further information visit https://rust-lang.git
+hub.io/rust-clippy/rust-1.94.0/index.html#unnecessary_to_owned
+
+warning: unnecessary use of `to_vec`
+   --> src\network\mod.rs:533:34
+    |
+533 |         self.send_packet(&col_buf.to_vec())?;
+    |                                  ^^^^^^^^^ help: remove t
+his
+    |
+    = help: for further information visit https://rust-lang.git
+hub.io/rust-clippy/rust-1.94.0/index.html#unnecessary_to_owned
+
+warning: unnecessary use of `to_vec`
+   --> src\network\mod.rs:540:34
+    |
+540 |         self.send_packet(&eof_buf.to_vec())?;
+    |                                  ^^^^^^^^^ help: remove t
+his
+    |
+    = help: for further information visit https://rust-lang.git
+hub.io/rust-clippy/rust-1.94.0/index.html#unnecessary_to_owned
+
+warning: unnecessary use of `to_vec`
+   --> src\network\mod.rs:546:34
+    |
+546 |         self.send_packet(&row_buf.to_vec())?;
+    |                                  ^^^^^^^^^ help: remove t
+his
+    |
+    = help: for further information visit https://rust-lang.git
+hub.io/rust-clippy/rust-1.94.0/index.html#unnecessary_to_owned
+
+warning: unnecessary use of `to_vec`
+   --> src\network\mod.rs:549:34
+    |
+549 |         self.send_packet(&eof_buf.to_vec())?;
+    |                                  ^^^^^^^^^ help: remove t
+his
+    |
+    = help: for further information visit https://rust-lang.git
+hub.io/rust-clippy/rust-1.94.0/index.html#unnecessary_to_owned
+
+warning: unnecessary use of `to_vec`
+   --> src\network\mod.rs:611:27
+    |
+611 |         .write_all(&packet.to_vec())
+    |                           ^^^^^^^^^ help: remove this
+    |
+    = help: for further information visit https://rust-lang.git
+hub.io/rust-clippy/rust-1.94.0/index.html#unnecessary_to_owned
+
+warning: explicit call to `.into_iter()` in function argument a
+ccepting `IntoIterator`
+   --> src\storage\bplus_tree\tree.rs:74:54
+    |
+ 74 |         let mut pairs: Vec<_> = keys.into_iter().zip(valu
+es.into_iter()).collect();
+    |                                                      ^^^^
+^^------------
+    |                                                          
+  |
+    |                                                          
+  help: consider removing the `.into_iter()`
+    |
+note: this parameter accepts any `IntoIterator`, so you don't n
+eed to call `.into_iter()`
+   --> C:\Users\Aoxin\.rustup\toolchains\stable-x86_64-pc-windo
+ws-msvc\lib/rustlib/src/rust\library\core\src\iter\traits\itera
+tor.rs:620:12
+    |
+620 |         U: IntoIterator,
+    |            ^^^^^^^^^^^^
+    = help: for further information visit https://rust-lang.git
+hub.io/rust-clippy/rust-1.94.0/index.html#useless_conversion
+    = note: `-W clippy::useless-conversion` implied by `-W clip
+py::all`
+    = help: to override `-W clippy::all` add `#[allow(clippy::u
+seless_conversion)]`
+
+warning: manually reimplementing `div_ceil`
+  --> src\storage\bplus_tree\tree.rs:77:19
+   |
+77 |         let mid = (pairs.len() + 1) / 2;
+   |                   ^^^^^^^^^^^^^^^^^^^^^ help: consider usi
+ng `.div_ceil()`: `pairs.len().div_ceil(2)`
+   |
+   = help: for further information visit https://rust-lang.gith
+ub.io/rust-clippy/rust-1.94.0/index.html#manual_div_ceil
+   = note: `-W clippy::manual-div-ceil` implied by `-W clippy::
+all`
+   = help: to override `-W clippy::all` add `#[allow(clippy::ma
+nual_div_ceil)]`
+
+warning: this `if` statement can be collapsed
+  --> src\storage\file_storage.rs:86:13
+   |
+86 | /             if let Some(file_name) = path.file_name().an
+d_then(|s| s.to_str()) {
+87 | |                 if file_name.ends_with(".json") && file_
+name.contains("_idx_") {
+88 | |                     // Parse table_idx_column.json
+89 | |                     if let Some((table_name, column_name
+)) = file_name
+...  |
+99 | |             }
+   | |_____________^
+   |
+   = help: for further information visit https://rust-lang.gith
+ub.io/rust-clippy/rust-1.94.0/index.html#collapsible_if
+help: collapse nested if block
+   |
+86 ~             if let Some(file_name) = path.file_name().and_
+then(|s| s.to_str())
+87 ~                 && file_name.ends_with(".json") && file_na
+me.contains("_idx_") {
+88 |                     // Parse table_idx_column.json
+...
+97 |                     }
+98 ~                 }
+   |
+
+warning: this `if` statement can be collapsed
+  --> src\storage\file_storage.rs:89:21
+   |
+89 | /                     if let Some((table_name, column_name
+)) = file_name
+90 | |                         .strip_suffix(".json")
+91 | |                         .and_then(|s| s.split_once("_idx
+_"))
+...  |
+97 | |                     }
+   | |_____________________^
+   |
+   = help: for further information visit https://rust-lang.gith
+ub.io/rust-clippy/rust-1.94.0/index.html#collapsible_if
+help: collapse nested if block
+   |
+91 ~                         .and_then(|s| s.split_once("_idx_"
+))
+92 ~                         && let Ok(index) = self.load_index
+(table_name, column_name) {
+93 |                             self.indexes
+94 |                                 .insert((table_name.to_str
+ing(), column_name.to_string()), index);
+95 ~                         }
+   |
+
+warning: this `if let` can be collapsed into the outer `if let`
+   --> src\storage\file_storage.rs:259:17
+    |
+259 | /                 if let Value::Integer(key) = value {
+260 | |                     index.insert(*key, row_id as u32);
+261 | |                 }
+    | |_________________^
+    |
+help: the outer pattern can be modified to include the inner pa
+ttern
+   --> src\storage\file_storage.rs:258:25
+    |
+258 |             if let Some(value) = row.get(column_index) {
+    |                         ^^^^^ replace this binding
+259 |                 if let Value::Integer(key) = value {
+    |                        ^^^^^^^^^^^^^^^^^^^ with this patt
+ern
+    = help: for further information visit https://rust-lang.git
+hub.io/rust-clippy/rust-1.94.0/index.html#collapsible_match
+
+warning: this `if` statement can be collapsed
+   --> src\storage\file_storage.rs:258:13
+    |
+258 | /             if let Some(value) = row.get(column_index) 
+{
+259 | |                 if let Value::Integer(key) = value {
+260 | |                     index.insert(*key, row_id as u32);
+261 | |                 }
+262 | |             }
+    | |_____________^
+    |
+    = help: for further information visit https://rust-lang.git
+hub.io/rust-clippy/rust-1.94.0/index.html#collapsible_if
+help: collapse nested if block
+    |
+258 ~             if let Some(value) = row.get(column_index)
+259 ~                 && let Value::Integer(key) = value {
+260 |                     index.insert(*key, row_id as u32);
+261 ~                 }
+    |
+
+warning: `sqlrustgo` (lib) generated 19 warnings (run `cargo cl
+ippy --fix --lib -p sqlrustgo` to apply 17 suggestions)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) 
+in 2.84s

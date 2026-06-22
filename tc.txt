@@ -1,0 +1,8 @@
+﻿cargo :    Compiling sqlrustgo v1.0.0 (D:\software\Trae CN\rustgo\sqlrustgo)
+所在位置 行:1 字符: 5
++ & { cargo test --lib 2>&1 | Out-File -FilePath "d:\software\Trae CN\r ...
++     ~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (   Compiling sq...stgo\sqlrustgo) 
+   :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
