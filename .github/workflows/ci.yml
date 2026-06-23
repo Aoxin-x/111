@@ -8,15 +8,10 @@ on:
 jobs:
   lint-and-test:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        rust-toolchain: [stable, nightly]
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
         with:
-          toolchain: ${{ matrix.rust-toolchain }}
           components: clippy,rustfmt
       - name: Clippy strict check
         run: cargo clippy --all-features -- -D warnings
