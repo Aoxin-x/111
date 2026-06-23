@@ -8,13 +8,16 @@ on:
 jobs:
   lint-and-test:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        rust-toolchain: [stable, nightly]
     steps:
       - uses: actions/checkout@v4
-      - name: Install Rust toolchain
-        run: |
-          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-          echo "export PATH=\"$HOME/.cargo/bin:$PATH\"" >> $GITHUB_ENV
-          rustup component add clippy rustfmt
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: ${{ matrix.rust-toolchain }}
+          components: clippy,rustfmt
       - name: Clippy strict check
         run: cargo clippy --all-features -- -D warnings
       - name: Format check
@@ -26,10 +29,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Install Rust toolchain
-        run: |
-          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-          echo "export PATH=\"$HOME/.cargo/bin:$PATH\"" >> $GITHUB_ENV
+      - uses: dtolnay/rust-toolchain@stable
       - name: Install cargo-llvm-cov
         run: cargo install cargo-llvm-cov
       - name: Generate lcov coverage
