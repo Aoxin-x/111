@@ -9,7 +9,7 @@ jobs:
   lint-and-test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: 安装Rust
         uses: actions-rust-lang/setup-rust-toolchain@v1
       - name: Build
@@ -24,7 +24,7 @@ jobs:
   security-audit:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: 安装Rust
         uses: actions-rust-lang/setup-rust-toolchain@v1
       - name: Install cargo-audit
@@ -35,7 +35,7 @@ jobs:
   coverage:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: 安装Rust
         uses: actions-rust-lang/setup-rust-toolchain@v1
       - name: Install cargo-llvm-cov
