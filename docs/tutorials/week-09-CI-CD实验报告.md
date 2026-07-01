@@ -544,6 +544,53 @@ c7649df feat: sqlrustgo v1.0 - lexer/parser/executor/storage/wal with 142 unit t
 
 ---
 
+## 七、实验总结
+
+### 7.1 知识收获
+
+（总结本次实验学到的知识点）
+
+1. **CI/CD 核心价值**：不是"能自动化就自动化"，而是把"别人电脑上也能跑"变成硬性门禁。以前本地 cargo clippy 没过就 push 了，现在云端自动卡合不了。
+2. **Rust CI 三件套**：Clippy `-D warnings`（警告即报错）+ rustfmt `--check`（格式一致）+ cargo test（测试全绿），三条一起跑才叫"代码质量门禁"。
+3. **覆盖率 LCOV 流程**：cargo-llvm-cov（比 tarpaulin 新，支持 LLVM 代码覆盖率）→ 生成 lcov.info → upload-artifact 传到 GitHub 页面可下载。
+4. **Rust Action 选型**：curl sh.rustup.sh（应急）< dtolnay/rust-toolchain（备选）< actions-rust-lang/setup-rust-toolchain（官方最稳）。Action 作者身份影响稳定性。
+5. **CI 平台差异**：Gitee runner 不带 Rust，GitHub ubuntu-latest 也不带——都要自己装。Gitee CI YAML 格式和 GitHub Actions 不兼容（Gitee Go 自家格式）。
+6. **GitHub API 诊断**：CI 挂了不用打开浏览器点来点去，直接 `Invoke-RestMethod` 查 jobs/steps/conclusion，1 行命令拿到完整失败链。
+
+### 7.2 技能提升
+
+（总结本次实验提升的技能）
+
+1. 会写 GitHub Actions workflow YAML：trigger（push/PR 分支）+ jobs（runs-on + steps + uses + with）+ matrix（stable/nightly）。
+2. 会用 GitHub API 诊断 CI 失败：actions/runs/{id}/jobs → 看每个 step 的 conclusion 链，秒定位根因。
+3. 会处理 protected branch：Gitee main 保护自动转 PR、force-with-lease 安全强推、remote set-url 迁移仓库。
+4. 会切换 CI 平台：Gitee（curl 装 Rust，CI 自家格式不认 GitHub Actions YAML）→ GitHub（标准 Actions，官方 Rust Action 可直接用）。
+5. 会分析 Action 自身故障：dtolnay v1 挂 → 看 GitHub jobs API 的 step conclusion → 换成官方 actions-rust-lang → 恢复。
+
+### 7.3 心得体会
+
+（分享实验过程中的心得体会）
+
+最触动的是**CI 不是"锦上添花"，是"最低门槛"**。
+
+之前几周都是本地跑一遍 cargo test 就 push 了。今天写了 CI 才发现：我的本地 Clippy 偶尔就有 warning（`unused import` 之类的），但我从来不管——因为没人拦我。CI 加上 `-D warnings` 之后，哪怕 1 个 warning 都合不了 main，倒逼自己把这些小事清干净。
+
+第二个触动是**Action 作者身份很重要**。dtolnay 在 Rust 社区口碑极好，但他的 Action 今天在 GitHub runner 上就是挂了。换成官方 actions-rust-lang 立刻好。这让我意识到：CI 用的 Action 不是"大 V 推荐就一定好"，而是"组织维护的 > 个人维护的"。
+
+第三个触动是**平台差异真的坑人**。Gitee CI 不认 `.github/workflows/`，Gitee Go 不认 GitHub Actions YAML，GitHub runner 配置又和 Gitee 不同。跨平台不是加个 flag 就完事，是整个 YAML 结构可能要重写。最后决定把 origin 直接改 GitHub，彻底砍掉 Gitee CI，专注 GitHub Actions 一套跑通。
+
+### 7.4 改进建议
+
+（对实验内容或方法的改进建议）
+
+1. **先讲 Action 选型**：实验前先演示"三个 Rust 安装 Action 的区别表格"（curl / dtolnay / actions-rust-lang），让学生知道"选官方维护的更稳"，而不是遇到挂了才去换。
+2. **CI 平台建议直接上 GitHub**：Gitee CI 和 GitHub Actions YAML 不兼容，学生容易懵。建议 Week-9 直接指定 GitHub，避免一半时间花在"Gitee 为什么不认我的 YAML"上。
+3. **GitHub API 诊断命令提前给**：把 `Invoke-RestMethod -Uri https://api.github.com/repos/{owner}/{repo}/actions/runs/{id}/jobs` 写成现成 PowerShell 片段贴给学生，遇到 CI 挂了直接跑，比让学生翻浏览器日志快 10 倍。
+4. **Force-with-lease 安全强推**：演示时用 `git push --force-with-lease` 而不是 `git push -f`。前者如果远程有自己没看到的 commit 会拒绝，不会把别人的工作冲掉，更符合"软件治理"的主题。
+5. **覆盖率 artifact 下载验证**：实验里跑完覆盖率后让学生"点 GitHub Actions 页面 → Artifacts → 下载 lcov.info → 本地用 genhtml 或 VS Code Coverage Gutters 打开"，感受"云端跑出来的东西可以拿到本地看"。
+
+---
+
 ## 八、AI 辅助示例
 
 ### 提示词 1：CI 失败，我要知道哪一步挂了
